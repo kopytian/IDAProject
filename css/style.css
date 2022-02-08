@@ -1,0 +1,154 @@
+html,
+body{
+  color: #3F3F3F;
+  font: 16px/1.25rem 'Source Sans Pro', sans-serif;
+  background-color: #E5E5E5;
+  box-sizing: border-box;
+}
+
+h2{
+  font-size: 1.75rem;
+  line-height: 2.5rem;
+  font-weight: 500;
+  box-sizing: border-box;
+  padding: 2rem 0;
+}
+
+.admin-wrap{
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100vw;
+  overflow: hidden;
+}
+.content-wrap{
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.form-wrap{
+  background-color: #FFFEFB;
+  border-radius: 0.33rem;
+  box-sizing: border-box;
+  margin-right: 1rem;
+  padding: 1.5rem;
+  width: 20.75rem;
+}
+.list-wrap{
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: minmax(26.5rem, auto);
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  position: relative;
+  width: 64.25rem;
+}
+
+.form-item{
+  margin-bottom: 1rem;
+}
+.form-item:last-child{
+  margin-bottom: 0;
+}
+.form-label{
+  font-size: 0.625rem;
+  line-height: 1.1rem;
+  display: block;
+}
+.form-item-required:after{
+  content: '*';
+  color: #FF8484;
+}
+.form-input,
+.form-textarea{
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  outline: none;
+  border-radius: 0.33rem;
+  border: none;
+  box-shadow: 0 0.1rem 0.4rem #EEE;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  width: 100%;
+}
+.form-textarea{
+  height: 6.75rem;
+  resize: none;
+}
+::placeholder {
+  color: #B4B4B4;
+  font: 0.75rem/1.25rem 'Source Sans Pro', sans-serif;
+}
+.form-submit{
+  color: #B4B4B4;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  border-radius: 0.625rem;
+  border: none;
+  box-sizing: border-box;
+  display: block;
+  padding: 0.5rem;
+  width: 100%;
+  background-color: #EEE;
+}
+
+.list-sort{
+  position: absolute;
+  top: -3rem;
+  right: 0;
+}
+.sort-select{
+  color: #B4B4B4;
+  font-size: 0.75rem;
+  outline: none;
+  border-radius: 0.33rem;
+  border: 1px solid #EEE;
+  border-top: none;
+  box-shadow: 0 0.1rem 0.4rem #EEE;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  width: 7.625rem;
+}
+
+.list-item{
+  background-color: #FFFEFB;
+  border: none;
+  border-radius: 0.33rem;
+  height: 26.5rem;
+  overflow: hidden;
+  position: relative;
+  width: 20.75rem;
+}
+.list-item-img{
+  margin-bottom: 0.75rem;
+  width: 100%;
+}
+.list-item-name{
+  font-size: 1.25rem;
+  font-weight: 500;
+  white-space: nowrap;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  max-height: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 1rem;
+}
+.list-item-description{
+  margin-bottom: 1rem;
+  max-height: 6.25rem;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+.list-item-price{
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 0 1rem;
+  position: absolute;
+  left: 0;
+  bottom: 1.5rem;
+}
