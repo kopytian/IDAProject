@@ -1,0 +1,24 @@
+<template>
+  <h2 class="admin-title">
+    {{ title }}
+  </h2>
+</template>
+
+<script>
+export default {
+name: 'Header',
+data: () => ({
+  title: 'Добавление товара'
+}),
+}
+</script>
+
+<style scoped>
+h2{
+  font-size: 1.75rem;
+  line-height: 2.5rem;
+  font-weight: 500;
+  box-sizing: border-box;
+  padding: 2rem 0;
+}
+</style>
