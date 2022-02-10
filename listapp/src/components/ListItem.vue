@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { thousands_separators } from '../helpers/forNumber';
 export default {
   name: 'ListItem',
   props: {
@@ -22,12 +23,7 @@ export default {
     }
   },
   methods: {
-    thousands_separators(num)
-        {
-          let num_string = String(num) ;
-          num_string = num_string.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-          return num_string;
-      }
+    thousands_separators
   }
 }
 </script>
