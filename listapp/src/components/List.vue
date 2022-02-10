@@ -1,7 +1,7 @@
 <template>
   <div class="list-wrap">
     <ListSort/>
-    <ListItem v-for="(item, prop) in list" :key="prop" :item="list[prop]" />
+    <ListItem v-for="(item, prop) in list" :key="prop" :item="list[prop]" @deleteItem="deleteItem"/>
   </div>
 </template>
 
@@ -23,8 +23,8 @@ export default {
     }
   },
   methods: {
-    onMouseUp: () => {
-
+    deleteItem(id) {
+      this.$emit('deleteItem', id);
     }
   }
 }
