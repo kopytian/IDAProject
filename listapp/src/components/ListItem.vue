@@ -1,0 +1,87 @@
+<template>
+  <div class="list-item">
+    <img :src=item.url alt="" class="list-item-img" />
+    <div class="list-item-name">{{item.name}}</div>
+    <div class="list-item-description">
+      {{item.description}}
+    </div>
+    <div class="list-item-price">
+      <span class="list-item-price-number">{{thousands_separators(item.price)}}</span> руб.
+    </div>
+    <div class="list-item-delete" id="key"></div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ListItem',
+  props: {
+    item: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  methods: {
+    thousands_separators(num)
+        {
+          let num_string = String(num) ;
+          num_string = num_string.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+          return num_string;
+      }
+  }
+}
+</script>
+
+<style scoped>
+.list-item{
+  background-color: #FFFEFB;
+  border: none;
+  border-radius: 0.33rem;
+  height: 26.5rem;
+  position: relative;
+  width: 20.75rem;
+}
+.list-item-img{
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.list-item-name{
+  font-size: 1.25rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  max-height: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 1rem;
+}
+.list-item-description{
+  margin-bottom: 1rem;
+  max-height: 6.25rem;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+.list-item-price{
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0 1rem;
+  position: absolute;
+  left: 0;
+  bottom: 2rem;
+}
+.list-item-delete{
+  cursor: pointer;
+  display: none;
+  height: 32px;
+  width: 32px;
+  background: url(../assets/delete.png) no-repeat center center #FF8484;
+  border-radius: 10px;
+  position: absolute;
+  top: -8px;
+  right: -6px;
+}
+.list-item:hover .list-item-delete{
+  display: block;
+}
+</style>

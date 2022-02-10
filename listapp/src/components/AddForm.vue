@@ -14,7 +14,7 @@
     </div>
     <div class="form-item">
       <label class="form-label form-item-required">Цена товара</label>
-      <input type="number" class="form-input" placeholder="Введите" />
+      <input type="number" class="form-input" placeholder="Введите цену" />
     </div>
     <div class="form-item">
       <input class="form-submit" type="submit" value="Добавить товар"/>
@@ -39,19 +39,24 @@ export default {
   width: 20.75rem;
 }
 .form-item{
+  box-sizing: border-box;
   margin-bottom: 1rem;
 }
 .form-item:last-child{
   margin-bottom: 0;
+  padding-top: 0.5rem;
 }
 .form-label{
   font-size: 0.625rem;
-  line-height: 1.1rem;
+  line-height: 0.75rem;
   display: block;
+  margin-bottom: 0.2rem;
 }
 .form-item-required:after{
   content: '*';
   color: #FF8484;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 .form-input,
 .form-textarea{
@@ -62,7 +67,7 @@ export default {
   border: none;
   box-shadow: 0 0.1rem 0.4rem #EEE;
   box-sizing: border-box;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   width: 100%;
 }
 .form-textarea{

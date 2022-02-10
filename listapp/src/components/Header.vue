@@ -16,9 +16,9 @@ data: () => ({
 <style scoped>
 h2{
   font-size: 1.75rem;
-  line-height: 2.5rem;
-  font-weight: 500;
+  line-height: 2rem;
+  font-weight: 600;
   box-sizing: border-box;
-  padding: 2rem 0;
+  padding: 2rem 0 1rem;
 }
 </style>
