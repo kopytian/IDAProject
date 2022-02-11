@@ -3,7 +3,7 @@
   <Header />
   <div class="content-wrap">
     <AddForm @submitForm="submitForm" />
-    <List :list="list" />
+    <List :list="list" @deleteItem="deleteItem" />
   </div>
 </div>
 </template>
@@ -26,25 +26,29 @@ export default {
         name: "Наименование товара",
         url: "https://i.ibb.co/j3ZGd7T/img.png",
         description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк.",
-        price: 10000
+        price: 10000,
+        id: 1
       },
       2: {
         name: "Наименование товара",
         url: "https://i.ibb.co/j3ZGd7T/img.png",
         description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк.",
-        price: 10000
+        price: 10000,
+        id: 2
       },
       3: {
         name: "Наименование товара",
         url: "https://i.ibb.co/j3ZGd7T/img.png",
         description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк.",
-        price: 10000
+        price: 10000,
+        id: 3
       },
       4: {
         name: "Наименование товара",
         url: "https://i.ibb.co/j3ZGd7T/img.png",
         description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк.",
-        price: 10000
+        price: 10000,
+        id: 4
       },
     }
   }),
@@ -55,6 +59,9 @@ export default {
         id: String(Math.random())
       };
       this.list[newObj.id] = newObj;
+    },
+    deleteItem(id) {
+      delete this.list[id];
     }
   }
 }

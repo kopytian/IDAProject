@@ -6,14 +6,15 @@
       {{item.description}}
     </div>
     <div class="list-item-price">
-      <span class="list-item-price-number">{{thousands_separators(item.price)}}</span> руб.
+      <span class="list-item-price-number">{{ thousands_separators(item.price) }}</span> руб.
     </div>
-    <div class="list-item-delete" id="key"></div>
+    <div class="list-item-delete" :id="item.id" @click="onClickDelete(item.id)"></div>
   </div>
 </template>
 
 <script>
 import { thousands_separators } from '../helpers/forNumber';
+
 export default {
   name: 'ListItem',
   props: {
@@ -23,6 +24,9 @@ export default {
     }
   },
   methods: {
+    onClickDelete(id) {
+      this.$emit('deleteItem', id);
+    },
     thousands_separators
   }
 }
