@@ -2,7 +2,7 @@
 <div class="admin-wrap">
   <Header />
   <div class="content-wrap">
-    <AddForm />
+    <AddForm @submitForm="submitForm" />
     <List :list="list" @deleteItem="deleteItem" />
   </div>
 </div>
@@ -53,9 +53,16 @@ export default {
     }
   }),
   methods: {
+    submitForm(data) {
+      const newObj = {
+        ...data,
+        id: String(Math.random())
+      };
+      this.list[newObj.id] = newObj;
+    },
     deleteItem(id) {
       delete this.list[id];
-    },
+    }
   }
 }
 </script>
@@ -75,7 +82,7 @@ export default {
   display: flex;
   flex-flow: row;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: nowrap;
 }
 </style>
