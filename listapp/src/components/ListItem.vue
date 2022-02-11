@@ -1,6 +1,6 @@
 <template>
   <div class="list-item">
-    <img :src=item.url alt="" class="list-item-img" />
+    <img :src=item.url alt="" height="200" class="list-item-img" />
     <div class="list-item-name">{{item.name}}</div>
     <div class="list-item-description">
       {{item.description}}

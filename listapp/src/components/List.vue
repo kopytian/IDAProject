@@ -1,7 +1,12 @@
 <template>
-  <div class="list-wrap">
-    <ListSort/>
-    <ListItem v-for="(item, prop) in list" :key="prop" :item="list[prop]" />
+  <div>
+    <transition>
+      <div v-if="Object.keys(list).length > 0" class="list-wrap">
+        <ListSort/>
+        <ListItem v-for="(item, prop) in list" :key="prop" :item="list[prop]" />
+      </div>
+      <div class="list-empty-message" v-else>Товаров нет, добавьте их c помощью формы.</div>
+    </transition>
   </div>
 </template>
 

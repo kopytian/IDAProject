@@ -2,7 +2,7 @@
 <div class="admin-wrap">
   <Header />
   <div class="content-wrap">
-    <AddForm />
+    <AddForm @submitForm="submitForm" />
     <List :list="list" />
   </div>
 </div>
@@ -47,7 +47,16 @@ export default {
         price: 10000
       },
     }
-  })
+  }),
+  methods: {
+    submitForm(data) {
+      const newObj = {
+        ...data,
+        id: String(Math.random())
+      };
+      this.list[newObj.id] = newObj;
+    }
+  }
 }
 </script>
 
@@ -66,7 +75,7 @@ export default {
   display: flex;
   flex-flow: row;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: nowrap;
 }
 </style>
