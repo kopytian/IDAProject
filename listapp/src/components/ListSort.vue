@@ -1,17 +1,25 @@
 <template>
   <div class="list-sort">
-    <select class="sort-select">
-      <option >По умолчанию</option>
-      <option>По цене max</option>
-      <option>По цене min</option>
-      <option>По наименованию</option>
+    <select class="sort-select" v-model="sortType" @change="onChangeSort">
+      <option value="default">По умолчанию</option>
+      <option value="name">По наименованию</option>
+      <option value="min">По цене min</option>
+      <option value="max">По цене max</option>
     </select>
   </div>
 </template>
 
 <script>
 export default {
-name: 'ListSort'
+  name: 'ListSort',
+  data: () => ({
+    sortType: 'default',
+  }),
+  methods: {
+    onChangeSort() {
+      this.$emit('editSortType', this.sortType);
+    }
+  }
 }
 </script>
 

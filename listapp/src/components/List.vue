@@ -1,9 +1,9 @@
 <template>
   <div>
     <transition>
-      <div v-if="Object.keys(list).length > 0" class="list-wrap">
-        <ListSort/>
-        <ListItem v-for="(item, prop) in list" :key="prop" :item="list[prop]" @deleteItem="deleteItem"/>
+      <div v-if="list.length > 0" class="list-wrap">
+        <ListSort @edit-sort-type="sortType = $event"/>
+        <ListItem v-for="item in sortedList" :key="item.id" :item="item" />
       </div>
       <div class="list-empty-message" v-else>Товаров нет, добавьте их c помощью формы.</div>
     </transition>
@@ -14,6 +14,9 @@
 import ListSort from './ListSort.vue';
 import ListItem from './ListItem.vue';
 
+let sortByName = function (d1, d2) {return (d1.name.toLowerCase() > d2.name.toLowerCase()) ? 1 : -1;};
+let sortByLowPrice = function (d1, d2) { return (d1.price > d2.price) ? 1 : -1; };
+let sortByHighPrice = function (d1, d2) { return (d1.price < d2.price) ? 1 : -1; };
 
 export default {
   name: 'List',
@@ -21,15 +24,28 @@ export default {
     ListSort,
     ListItem
   },
+  data: () => ({
+    sortType: 'default',
+  }),
   props: {
     list: {
-      type: Object,
-      default: () => ({})
+      type: Array,
+      default: () => ([])
     }
   },
   methods: {
     deleteItem(id) {
       this.$emit('deleteItem', id);
+  },
+  computed: {
+    sortedList () {
+      let list = this.list;
+      switch(this.sortType){
+        case 'name': return list.sort(sortByName);
+        case 'min': return list.sort(sortByLowPrice);
+        case 'max': return list.sort(sortByHighPrice);
+        default: return list;
+      }
     }
   }
 }
