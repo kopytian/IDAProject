@@ -1,9 +1,11 @@
 <template>
   <div>
-    <transition>
+    <transition name="fade">
       <div v-if="list.length > 0" class="list-wrap">
         <ListSort @edit-sort-type="sortType = $event"/>
-        <ListItem v-for="item in sortedList" :key="item.id" :item="item" />
+        <transition-group name="fade">
+          <ListItem v-for="item in sortedList" :key="item.id" :item="item" @deleteItem ="deleteItem"/>
+        </transition-group>
       </div>
       <div class="list-empty-message" v-else>Товаров нет, добавьте их c помощью формы.</div>
     </transition>
@@ -36,14 +38,16 @@ export default {
   methods: {
     deleteItem(id) {
       this.$emit('deleteItem', id);
+    }
   },
   computed: {
     sortedList () {
       let list = this.list;
+
       switch(this.sortType){
-        case 'name': return list.sort(sortByName);
-        case 'min': return list.sort(sortByLowPrice);
-        case 'max': return list.sort(sortByHighPrice);
+        case 'name': return list.slice().sort(sortByName);
+        case 'min': return list.slice().sort(sortByLowPrice);
+        case 'max': return list.slice().sort(sortByHighPrice);
         default: return list;
       }
     }
@@ -61,5 +65,13 @@ export default {
   grid-row-gap: 1rem;
   position: relative;
   width: 64.25rem;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

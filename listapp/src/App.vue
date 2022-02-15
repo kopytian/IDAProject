@@ -61,7 +61,8 @@ export default {
       this.list.push(newObj);
     },
     deleteItem(id) {
-      delete this.list[id];
+      const deleteIndex = this.list.findIndex(item => item.id === id);
+      this.list.splice(deleteIndex, 1);
     }
   }
 }
