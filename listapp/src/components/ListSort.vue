@@ -41,4 +41,12 @@ export default {
   padding: 0.5rem 0.5rem 0.5rem 0.75rem;
   width: 7.625rem;
 }
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .list-sort{
+    position: relative;
+    padding-top: 1rem;
+    top: 0;
+    left: 0;
+  }
+}
 </style>

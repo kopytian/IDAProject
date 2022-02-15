@@ -74,4 +74,19 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .list-wrap{
+    grid-template-columns: 1fr;
+    width: 100%;
+    grid-auto-rows: auto;
+  }
+}
+@media only screen and (min-device-width: 480px) and (max-device-width: 1024px) {
+  .list-wrap{
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1vw;
+    grid-row-gap: 1vw;
+    width: 60vw;
+  }
+}
 </style>

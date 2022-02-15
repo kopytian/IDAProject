@@ -42,6 +42,7 @@ export default {
   width: 20.75rem;
 }
 .list-item-img{
+  height: auto;
   margin-bottom: 1rem;
   width: 100%;
 }
@@ -83,5 +84,10 @@ export default {
 }
 .list-item:hover .list-item-delete{
   display: block;
+}
+@media only screen and (min-device-width: 480px) and (max-device-width: 1024px) {
+  .list-item{
+    width: 29.5vw;
+  }
 }
 </style>

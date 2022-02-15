@@ -77,7 +77,6 @@ export default {
   margin: 0 auto;
   padding: 0 2rem;
   width: 100vw;
-  overflow: hidden;
 }
 .content-wrap{
   display: flex;
@@ -85,5 +84,10 @@ export default {
   align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: nowrap;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .content-wrap{
+    flex-flow: column;
+  }
 }
 </style>

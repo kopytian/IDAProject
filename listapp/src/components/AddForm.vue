@@ -197,4 +197,14 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
+@media only screen and (min-device-width: 320px) and (max-device-width: 48px) {
+  .form-wrap{
+    width: 100%;
+  }
+}
+@media only screen and (min-device-width: 480px) and (max-device-width: 1024px) {
+  .form-wrap{
+    width: 40vw;
+  }
+}
 </style>
