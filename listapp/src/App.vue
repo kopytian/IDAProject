@@ -21,36 +21,36 @@ export default {
     List
   },
   data: () => ({
-    list: {
-      1: {
+    list: [
+      {
         name: "Наименование товара",
         url: "https://i.ibb.co/j3ZGd7T/img.png",
         description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк.",
         price: 10000,
         id: 1
       },
-      2: {
-        name: "Наименование товара",
+      {
+        name: "Первое наименование товара",
         url: "https://i.ibb.co/j3ZGd7T/img.png",
         description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк.",
-        price: 10000,
+        price: 1000,
         id: 2
       },
-      3: {
-        name: "Наименование товара",
+      {
+        name: "Сначала наименование товара",
         url: "https://i.ibb.co/j3ZGd7T/img.png",
         description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк.",
         price: 10000,
         id: 3
       },
-      4: {
-        name: "Наименование товара",
+      {
+        name: "Другое наименование товара",
         url: "https://i.ibb.co/j3ZGd7T/img.png",
         description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк.",
-        price: 10000,
+        price: 100,
         id: 4
       },
-    }
+    ]
   }),
   methods: {
     submitForm(data) {
@@ -58,10 +58,11 @@ export default {
         ...data,
         id: String(Math.random())
       };
-      this.list[newObj.id] = newObj;
+      this.list.push(newObj);
     },
     deleteItem(id) {
-      delete this.list[id];
+      const deleteIndex = this.list.findIndex(item => item.id === id);
+      this.list.splice(deleteIndex, 1);
     }
   }
 }
@@ -76,7 +77,6 @@ export default {
   margin: 0 auto;
   padding: 0 2rem;
   width: 100vw;
-  overflow: hidden;
 }
 .content-wrap{
   display: flex;
@@ -84,5 +84,10 @@ export default {
   align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: nowrap;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .content-wrap{
+    flex-flow: column;
+  }
 }
 </style>

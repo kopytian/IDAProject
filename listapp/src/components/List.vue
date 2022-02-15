@@ -1,9 +1,11 @@
 <template>
   <div>
-    <transition>
-      <div v-if="Object.keys(list).length > 0" class="list-wrap">
-        <ListSort/>
-        <ListItem v-for="(item, prop) in list" :key="prop" :item="list[prop]" @deleteItem="deleteItem"/>
+    <transition name="fade">
+      <div v-if="list.length > 0" class="list-wrap">
+        <ListSort @edit-sort-type="sortType = $event"/>
+        <transition-group name="fade">
+          <ListItem v-for="item in sortedList" :key="item.id" :item="item" @deleteItem ="deleteItem"/>
+        </transition-group>
       </div>
       <div class="list-empty-message" v-else>Товаров нет, добавьте их c помощью формы.</div>
     </transition>
@@ -14,6 +16,9 @@
 import ListSort from './ListSort.vue';
 import ListItem from './ListItem.vue';
 
+let sortByName = function (d1, d2) {return (d1.name.toLowerCase() > d2.name.toLowerCase()) ? 1 : -1;};
+let sortByLowPrice = function (d1, d2) { return (d1.price > d2.price) ? 1 : -1; };
+let sortByHighPrice = function (d1, d2) { return (d1.price < d2.price) ? 1 : -1; };
 
 export default {
   name: 'List',
@@ -21,15 +26,30 @@ export default {
     ListSort,
     ListItem
   },
+  data: () => ({
+    sortType: 'default',
+  }),
   props: {
     list: {
-      type: Object,
-      default: () => ({})
+      type: Array,
+      default: () => ([])
     }
   },
   methods: {
     deleteItem(id) {
       this.$emit('deleteItem', id);
+    }
+  },
+  computed: {
+    sortedList () {
+      let list = this.list;
+
+      switch(this.sortType){
+        case 'name': return list.slice().sort(sortByName);
+        case 'min': return list.slice().sort(sortByLowPrice);
+        case 'max': return list.slice().sort(sortByHighPrice);
+        default: return list;
+      }
     }
   }
 }
@@ -45,5 +65,28 @@ export default {
   grid-row-gap: 1rem;
   position: relative;
   width: 64.25rem;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .list-wrap{
+    grid-template-columns: 1fr;
+    width: 100%;
+    grid-auto-rows: auto;
+  }
+}
+@media only screen and (min-device-width: 480px) and (max-device-width: 1024px) {
+  .list-wrap{
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1vw;
+    grid-row-gap: 1vw;
+    width: 60vw;
+  }
 }
 </style>
